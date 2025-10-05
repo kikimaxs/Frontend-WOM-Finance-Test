@@ -8,11 +8,13 @@ enum ROUTERS {
 
   HomeAttendance = 'HomeAttendance',
   AuthMain = 'AuthMain',
+  ProductDetails = 'ProductDetails',
 
 }
 
 export type RouteParams = {
   title?: string;
+  data?: any;
 };
 
 
@@ -20,6 +22,7 @@ export type RootStackNavigationTypes = {
 
   [ROUTERS.HomeAttendance]: RouteParams | undefined;
   [ROUTERS.AuthMain]: RouteParams | undefined;
+  [ROUTERS.ProductDetails]: { productId: number; title?: string; product?: any } | undefined;
 
 };
 
