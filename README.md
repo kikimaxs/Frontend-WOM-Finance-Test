@@ -102,7 +102,7 @@ You can download the latest release APK from the following link:
 
 **Android APK**:
 
-https://drive.google.com/file/d/1idx8OkQ6aMV3KyU8JSEudCu3w2kvw4w-/view?usp=drive_link
+https://drive.google.com/file/d/1eo77_88Hhz1Uz2XBcnWGpHRYqqWZFBxf/view?usp=sharing
 
 If the link requires access, ensure your Google account has permission or request access from the maintainer.
 
@@ -148,8 +148,3 @@ Di macOS/Linux (bash) gunakan `./gradlew` (tanpa `.bat`).
 - Gradle memory: jika melihat peringatan Metaspace/Heap, tingkatkan `org.gradle.jvmargs` di `android/gradle.properties`, contoh:
   - `org.gradle.jvmargs=-Xmx4g -XX:MaxMetaspaceSize=1024m -Dkotlin.daemon.jvm.options=-Xmx2g`
 - Google Sign-In: file `android/app/google-services.json` sudah tersedia. Pastikan Firebase/Google Sign-In dikonfigurasi sesuai project.
-
-## Instalasi APK di Perangkat
-
-- Salin file APK (`app-release.apk` atau `app-debug.apk`) ke perangkat.
-- Buka file tersebut di perangkat dan izinkan pemasangan dari sumber tidak dikenal jika diminta.
