@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "431218500791",
+    "project_id": "supasupa-82768",
+    "storage_bucket": "supasupa-82768.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:431218500791:android:a4870d810b85fb9abe9932",
+        "android_client_info": {
+          "package_name": "com.testwomfe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "431218500791-181srlt3hmik2k0uhpa8t6bk06jh85qn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.testwomfe",
+            "certificate_hash": "0f4b45b828f9f31d28b50a8de87e3b45b4b810ff"
+          }
+        },
+        {
+          "client_id": "431218500791-ngp944qlvt2rjnt5k6qtjm6dcc50fsvg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.testwomfe",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "431218500791-im2mke6q1dv0qjb1c4b8tghrsa01hmde.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADao8pc1OPVlNFV59iF1KIoDc_-qI9gi0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "431218500791-im2mke6q1dv0qjb1c4b8tghrsa01hmde.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
