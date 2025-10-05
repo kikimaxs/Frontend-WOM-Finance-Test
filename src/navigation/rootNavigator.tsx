@@ -28,7 +28,7 @@ function RootNavigator() {
       {/* start region screen App */}
          <Screen name={ROUTERS.HomeAttendance} component={HomeAttendanceScreens} />
          <Screen name={ROUTERS.AuthMain} component={AuthMainScreen} />
-         <Screen name={ROUTERS.ProductDetails} component={ProductDetailsScreen} options={{ headerShown: true }} />
+         <Screen name={ROUTERS.ProductDetails} component={ProductDetailsScreen} options={{ headerShown: false }} />
       {/* end region screen App */}
     </Navigator>
   );

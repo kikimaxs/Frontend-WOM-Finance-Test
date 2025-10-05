@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, RefreshControl } from 'react-native';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { ROUTERS, RootStackNavigationTypes } from '@/src/routes';
@@ -6,6 +6,8 @@ import { fetchProductDetail, Product } from '@/src/utils/productsApi';
 import ProductCard from '@/src/modules/Product/components/ProductCard';
 import LoadingState from '@/src/modules/Common/components/LoadingState';
 import ErrorState from '@/src/modules/Common/components/ErrorState';
+import Rating from '@/src/modules/Common/components/Rating';
+import HeaderBar from '@/src/modules/Common/components/HeaderBar';
 
 type ProductDetailsRoute = RouteProp<RootStackNavigationTypes, ROUTERS.ProductDetails>;
 
@@ -18,18 +20,7 @@ export default function ProductDetailsScreen() {
   const [error, setError] = useState<string | null>(null);
   const [refreshing, setRefreshing] = useState<boolean>(false);
 
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: true,
-      title: title || 'Detail Produk',
-      headerBackTitle: 'Back',
-      headerLeft: () => (
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-          <Text style={styles.backText}>Back</Text>
-        </TouchableOpacity>
-      ),
-    });
-  }, [navigation, title]);
+  // Header native diganti oleh HeaderBar custom untuk konsistensi UI
 
   const loadDetail = async (opts?: { silent?: boolean }) => {
     let mounted = true;
@@ -90,7 +81,9 @@ export default function ProductDetailsScreen() {
   }
 
   return (
-    <ScrollView
+    <View style={{ flex: 1, backgroundColor: '#fff' }}>
+      <HeaderBar title={title || 'Detail Produk'} showBack onBackPress={() => navigation.goBack()} />
+      <ScrollView
       style={styles.container}
       contentContainerStyle={styles.content}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
@@ -102,12 +95,18 @@ export default function ProductDetailsScreen() {
         <Image source={{ uri: product.thumbnail }} style={styles.image} resizeMode="contain" />
       ) : null}
       <Text style={styles.title}>{product.title}</Text>
+      {typeof product.rating === 'number' ? (
+        <View style={styles.ratingRow}>
+          <Rating rating={Math.floor(product.rating)} size={16} spacing={3} />
+          <Text style={styles.ratingText}>{product.rating.toFixed ? product.rating.toFixed(1) : product.rating}</Text>
+        </View>
+      ) : null}
       <Text style={styles.price}>${product.price}</Text>
       <Text style={styles.description}>{product.description}</Text>
       {product.brand ? <Text style={styles.meta}>Brand: {product.brand}</Text> : null}
       {product.category ? <Text style={styles.meta}>Category: {product.category}</Text> : null}
-      {product.rating ? <Text style={styles.meta}>Rating: {product.rating}</Text> : null}
     </ScrollView>
+    </View>
   );
 }
 
@@ -117,9 +116,11 @@ const styles = StyleSheet.create({
   centerBox: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   image: { width: '100%', height: 240, borderRadius: 12, backgroundColor: '#eee' },
   title: { fontSize: 22, fontWeight: '700', marginTop: 12 },
+  ratingRow: { flexDirection: 'row', alignItems: 'center', marginTop: 6 },
+  ratingText: { marginLeft: 8, fontSize: 13, color: '#666' },
   price: { fontSize: 18, fontWeight: '700', color: '#007AFF', marginTop: 6 },
   description: { fontSize: 14, color: '#333', marginTop: 12, lineHeight: 20 },
   meta: { marginTop: 8, fontSize: 13, color: '#666' },
-  backButton: { paddingHorizontal: 8, paddingVertical: 4 },
-  backText: { color: '#007AFF', fontWeight: '600' },
+  backButton: { },
+  backText: { },
 });

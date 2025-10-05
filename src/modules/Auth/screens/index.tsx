@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, Button, TouchableOpacity, Alert, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { ROUTERS } from '@/src/routes';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,7 +8,7 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { saveTokens, saveUser, clearTokens, clearUser } from '@/src/utils/secureStore';
 import { RootState } from '@/src/configs/store';
 import { getExpiryFromJWT } from '@/src/utils/jwt';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+// Ikon Google diganti ke gambar dari assets
 
 export default function AuthMainScreen() {
   const navigation = useNavigation();
@@ -68,7 +68,7 @@ export default function AuthMainScreen() {
       <Text style={styles.subtitle}>Silakan login untuk melanjutkan.</Text>
       <View style={styles.actions}>
         <TouchableOpacity style={styles.googleButton} onPress={handleGoogleLogin}>
-          <MaterialCommunityIcons name="google" size={20} color="#fff" />
+          <Image source={require('../../../../assets/images/icon-google.png')} style={styles.googleIcon} />
           <Text style={styles.googleButtonText}>Masuk dengan Google</Text>
         </TouchableOpacity>
       </View>
@@ -82,18 +82,21 @@ const styles = StyleSheet.create({
   subtitle: { marginTop: 8, fontSize: 14, color: '#666' },
   actions: { marginTop: 16, width: '80%' },
   googleButton: {
-    backgroundColor: '#4285F4',
+    backgroundColor: '#ffffff',
     paddingVertical: 12,
     borderRadius: 6,
     alignItems: 'center',
     marginBottom: 10,
     flexDirection: 'row',
     justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: '#000000',
   },
   googleButtonText: {
-    color: '#fff',
+    color: '#000000',
     fontWeight: '600',
     fontSize: 16,
     marginLeft: 8,
   },
+  googleIcon: { width: 30, height: 30 },
 });

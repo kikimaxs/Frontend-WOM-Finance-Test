@@ -11,6 +11,8 @@ import { fetchProducts, Product } from '@/src/utils/productsApi';
 import ProductCard from '@/src/modules/Product/components/ProductCard';
 import LoadingState from '@/src/modules/Common/components/LoadingState';
 import ErrorState from '@/src/modules/Common/components/ErrorState';
+import HeaderBar from '@/src/modules/Common/components/HeaderBar';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default function HomeAttendanceScreens() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackNavigationTypes>>();
@@ -67,13 +69,17 @@ export default function HomeAttendanceScreens() {
     });
   };
   return (
+    <>
+      <HeaderBar
+        title="Home"
+        rightContent={(
+          <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+            <MaterialCommunityIcons name="logout" size={18} color="#fff" />
+            <Text style={styles.logoutText}>Logout</Text>
+          </TouchableOpacity>
+        )}
+      />
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Home</Text>
-        <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-          <Text style={styles.logoutText}>Logout</Text>
-        </TouchableOpacity>
-      </View>
       <Text style={styles.subtitle}>Selamat datang{userData?.name ? `, ${userData.name}` : ''}!</Text>
       <View style={styles.listContainer}>
         {loading ? (
@@ -96,6 +102,7 @@ export default function HomeAttendanceScreens() {
         )}
       </View>
     </View>
+    </>
   );
 }
 
@@ -108,8 +115,8 @@ const styles = StyleSheet.create({
   container: { flex: 1, paddingHorizontal: 16, paddingTop: 24, backgroundColor: '#fff' },
   header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   title: { fontSize: 24, fontWeight: 'bold' },
-  logoutButton: { paddingHorizontal: 12, paddingVertical: 6, backgroundColor: '#eee', borderRadius: 6 },
-  logoutText: { color: '#d00', fontWeight: '600' },
+  logoutButton: { paddingHorizontal: 12, paddingVertical: 6, backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: 6, flexDirection: 'row', alignItems: 'center' },
+  logoutText: { color: '#fff', fontWeight: '600', marginLeft: 6 },
   subtitle: { marginTop: 8, fontSize: 14, color: '#666' },
   listContainer: { flex: 1, marginTop: 12 },
   listContent: { paddingBottom: 24 },
