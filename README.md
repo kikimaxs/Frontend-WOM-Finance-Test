@@ -100,7 +100,7 @@ To learn more about React Native, take a look at the following resources:
 
 You can download the latest release APK from the following link:
 
-**Android APK (Release)**:
+**Android APK**:
 
 https://drive.google.com/file/d/1idx8OkQ6aMV3KyU8JSEudCu3w2kvw4w-/view?usp=drive_link
 
